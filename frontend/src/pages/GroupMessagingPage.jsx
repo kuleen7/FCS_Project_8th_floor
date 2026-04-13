@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { messagesAPI } from "../services/api";
 
 function GroupMessagingPage() {
@@ -23,7 +23,7 @@ function GroupMessagingPage() {
     }
   }, []);
 
-  const loadConversations = async () => {
+  const loadConversations = useCallback(async () => {
     try {
       const res = await messagesAPI.listConversations();
       const list = res.data || [];
@@ -34,7 +34,7 @@ function GroupMessagingPage() {
     } catch (err) {
       setError(err.response?.data?.detail || "Failed to load conversations");
     }
-  };
+  }, [selectedConversationId]);
 
   const loadDirectory = async (query = "") => {
     try {
@@ -65,7 +65,7 @@ function GroupMessagingPage() {
       setLoading(false);
     };
     init();
-  }, []);
+  }, [loadConversations]);
 
   useEffect(() => {
     const timer = setTimeout(() => loadDirectory(userSearch), 300);
@@ -83,7 +83,7 @@ function GroupMessagingPage() {
       loadConversations();
     }, 3000);
     return () => clearInterval(timer);
-  }, [selectedConversationId]);
+  }, [selectedConversationId, loadConversations]);
 
   const handleCreateConversation = async () => {
     setError("");

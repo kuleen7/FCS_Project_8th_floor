@@ -33,7 +33,7 @@ function OTPVerificationPage() {
     setIsSubmitting(true);
 
     try {
-      const response = await authAPI.verifyEmail({
+      await authAPI.verifyEmail({
         email: email,
         otp_code: otpCode
       });
@@ -63,7 +63,7 @@ function OTPVerificationPage() {
     setSuccess("");
 
     try {
-      const response = await authAPI.resendOTP({ email });
+      await authAPI.resendOTP({ email });
       setSuccess("OTP resent successfully! Check your email.");
     } catch (err) {
       const message =

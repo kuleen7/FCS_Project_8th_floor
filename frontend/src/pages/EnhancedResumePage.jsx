@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { buildOtpOnlyHeaders, jobsAPI, userAPI } from "../services/api";
 
 function EnhancedResumePage() {
@@ -12,7 +12,7 @@ function EnhancedResumePage() {
   const [loading, setLoading] = useState(true);
   const [role, setRole] = useState("user");
 
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     setLoading(true);
     setError("");
     try {
@@ -36,7 +36,7 @@ function EnhancedResumePage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedJobId]);
 
   useEffect(() => {
     try {
@@ -46,7 +46,7 @@ function EnhancedResumePage() {
       setRole("user");
     }
     loadData();
-  }, []);
+  }, [loadData]);
 
   if (role === "admin") {
     return (

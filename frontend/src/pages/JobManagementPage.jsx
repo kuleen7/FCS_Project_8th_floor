@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { buildHighRiskHeaders, companyAPI, jobsAPI } from "../services/api";
 
 const initialForm = {
@@ -22,7 +22,7 @@ function JobManagementPage() {
 
   const [selectedCompanyId, setSelectedCompanyId] = useState(null);
 
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     setLoading(true);
     setError("");
     try {
@@ -41,11 +41,11 @@ function JobManagementPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedCompanyId]);
 
   useEffect(() => {
     loadData();
-  }, []);
+  }, [loadData]);
 
   const resetForm = () => {
     setForm(initialForm);

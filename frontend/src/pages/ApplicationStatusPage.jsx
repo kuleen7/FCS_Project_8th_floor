@@ -58,7 +58,7 @@ function ApplicationStatusPage() {
       }
     };
     load();
-  }, [isRecruiter]);
+  }, [isRecruiter, selectedJobId]);
 
   const refreshApplicants = async () => {
     if (!selectedJobId) return;
