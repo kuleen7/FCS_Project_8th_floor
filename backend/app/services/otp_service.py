@@ -6,6 +6,7 @@ Handles OTP generation, sending, and verification
 from sqlalchemy.orm import Session
 from datetime import datetime, timedelta, timezone
 from typing import Optional, Tuple
+import asyncio
 
 from app.models import OTPVerification
 from app.security import OTPGenerator
@@ -52,11 +53,22 @@ class OTPService:
         # Try sending email if provided
         if email:
             try:
-                await email_service.send_otp_email(email, otp_code)
-                return True, "OTP sent successfully"
+                sent = await asyncio.wait_for(email_service.send_otp_email(email, otp_code), timeout=8)
+                if sent:
+                    return True, "OTP sent successfully"
+                if settings.OTP_REQUIRE_DELIVERY:
+                    return False, "Failed to deliver OTP email"
+                return True, "OTP generated. Email delivery failed; use fallback OTP flow."
+            except asyncio.TimeoutError:
+                print("⚠ Email sending timed out")
+                if settings.OTP_REQUIRE_DELIVERY:
+                    return False, "OTP email delivery timed out"
+                return True, "OTP generated. Email timed out; use fallback OTP flow."
             except Exception as e:
                 print(f"⚠ Email sending failed: {str(e)}")
-                return False, "OTP generated but email sending failed"
+                if settings.OTP_REQUIRE_DELIVERY:
+                    return False, "Failed to deliver OTP email"
+                return True, "OTP generated. Email delivery failed; use fallback OTP flow."
 
         # Mobile sending can be added here later
         return True, "OTP generated successfully"

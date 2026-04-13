@@ -59,7 +59,9 @@ class EmailService:
                 port=settings.SMTP_PORT,
                 username=settings.SMTP_USERNAME,
                 password=settings.SMTP_PASSWORD,
-                start_tls=True
+                start_tls=settings.SMTP_STARTTLS,
+                use_tls=settings.SMTP_USE_TLS,
+                timeout=settings.SMTP_TIMEOUT_SECONDS,
             )
             
             logger.info(f"Email sent successfully to {to_email}")

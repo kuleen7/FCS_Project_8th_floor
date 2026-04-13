@@ -161,13 +161,12 @@ async def resend_otp(otp_request: OTPRequest, db: Session = Depends(get_db)):
         email=otp_request.email,
         mobile=otp_request.mobile
     )
-    
     if not success:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=message
         )
-    
+
     return OTPResponse(
         message=message,
         expires_in=settings.OTP_EXPIRE_MINUTES * 60

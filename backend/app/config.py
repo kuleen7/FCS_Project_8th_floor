@@ -29,6 +29,7 @@ class Settings(BaseSettings):
     OTP_SECRET_KEY: str = secrets.token_urlsafe(32)
     OTP_EXPIRE_MINUTES: int = 5
     OTP_LENGTH: int = 6
+    OTP_REQUIRE_DELIVERY: bool = True
     
     # Email Configuration
     SMTP_SERVER: str = "smtp.gmail.com"
@@ -36,6 +37,9 @@ class Settings(BaseSettings):
     SMTP_USERNAME: Optional[str] = None
     SMTP_PASSWORD: Optional[str] = None
     SMTP_FROM_EMAIL: str = "noreply@securejobplatform.com"
+    SMTP_STARTTLS: bool = True
+    SMTP_USE_TLS: bool = False
+    SMTP_TIMEOUT_SECONDS: int = 15
     
     # SMS Configuration (Twilio)
     TWILIO_ACCOUNT_SID: Optional[str] = None
