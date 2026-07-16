@@ -1,4 +1,4 @@
-# FCS-26: Secure Job Search & Professional Networking Platform
+Secure Job Search & Professional Networking Platform
 
 A full-stack secure job marketplace and professional networking platform built for **CSE 345/545 (Foundations of Computer Security)** coursework. The platform implements end-to-end encryption, tamper-evident audit logging, role-based access control, and secure credential management.
 
@@ -117,14 +117,11 @@ Frontend runs on: **http://localhost:3000**
 
 ## 📋 Features
 
-### March Milestone ✅
 - ✅ Company Management (create, invite members, manage roles)
 - ✅ Job Postings (create, search, filter by location/type/salary)
 - ✅ Application Tracking (submit, track status, recruiter notes)
 - ✅ Encrypted Messaging (AES-256 end-to-end encryption)
 - ✅ Audit Logging (hash-chained tamper-evident logs)
-
-### April Milestone (In Progress)
 - 🔐 PKI Integration (digital signatures, certificate-based auth)
 - 🎹 Virtual Keyboard OTP (prevent keylogger attacks)
 - 🛡️ Enhanced Defenses (rate limiting, IP blocking)
