@@ -1,109 +1,135 @@
-Secure Job Search & Professional Networking Platform
+# Secure Job Search and Professional Networking Platform
 
-A full-stack secure job marketplace and professional networking platform built for **CSE 345/545 (Foundations of Computer Security)** coursework. The platform implements end-to-end encryption, tamper-evident audit logging, role-based access control, and secure credential management.
+A full-stack job marketplace and professional networking platform with end-to-end encryption and tamper-evident audit logging, developed for CSE 345/545 (Foundations of Computer Security) coursework.
 
-**Live Demo:** https://fcs-project-8th_floor.vercel.app
+**Live Deployment:** https://fcs-project-8th_floor.vercel.app
 
-## 🎯 Overview
+## Overview
 
-This platform enables:
-- **Job Seekers** to search jobs, apply with resumes, and communicate securely with recruiters
-- **Recruiters** to post jobs, manage applications, and track candidates
-- **Admins** to monitor system activity and verify audit log integrity
+This platform provides three user roles with distinct workflows:
 
-All sensitive communications are encrypted end-to-end, and every critical action is logged with cryptographic integrity verification.
+- **Job Seekers:** Search and apply to positions, upload resumes, and communicate securely with recruiters
+- **Recruiters:** Post job listings, manage incoming applications, and track candidate progress
+- **Administrators:** Monitor system activity, verify audit log integrity, and generate activity reports
 
-## 🛡️ Security Features
+All sensitive data exchanges utilize end-to-end encryption with cryptographic integrity verification. Critical system actions are logged to a hash-chained audit trail that detects any tampering or modification.
 
-### Message Encryption
-- **Algorithm:** AES-256-GCM with PBKDF2 key derivation
-- **End-to-End:** Messages encrypted on client, decrypted only by intended recipient
-- **Integrity:** SHA-256 hash verification prevents tampering
+## Technical Architecture
 
-### Audit Logging
-- **Hash-Chained:** Each log entry contains a hash of the previous entry
-- **Tamper Detection:** Any modification breaks the chain
-- **Comprehensive:** Tracks authentication, data changes, admin actions
+### Backend Stack
+- **Framework:** FastAPI (Python 3.8+)
+- **Database:** PostgreSQL 12+
+- **ORM:** SQLAlchemy
+- **Deployment:** Render
+
+### Frontend Stack
+- **Framework:** React 18
+- **Routing:** React Router
+- **Styling:** Tailwind CSS
+- **Cryptography:** crypto-js
+- **Deployment:** Vercel
+
+### Language Composition
+- Python: 62.5%
+- JavaScript: 32.6%
+- Shell: 4.8%
+- Other: 0.1%
+
+## Security Architecture
+
+### Encryption
+
+**Message Encryption:**
+- Algorithm: AES-256-GCM with PBKDF2 key derivation
+- Scope: End-to-end encryption between client and intended recipient
+- Integrity: SHA-256 hash verification prevents message tampering
+
+**Audit Trail:**
+- Hash-chained design: Each log entry contains SHA-256 hash of previous entry
+- Tamper detection: Any modification breaks the cryptographic chain
+- Coverage: Authentication events, data modifications, administrative actions
 
 ### Access Control
-- **Role-Based:** User, Recruiter, Admin roles with specific permissions
-- **Resource Ownership:** Users can only access their own resources
-- **Company Context:** Company-based access control for jobs and applications
 
-### Authentication
-- **OTP-Based:** One-Time Password via email/SMS
-- **JWT Tokens:** Stateless authentication with expiration
-- **Password Policy:** Minimum requirements enforced
+**Authorization Model:**
+- Role-based access control (RBAC) with User, Recruiter, and Admin roles
+- Resource ownership restrictions: Users access only their own data
+- Company-level context: Job listings and applications scoped to company membership
+- Granular permissions enforced at API endpoint level
 
-## 🏗️ Architecture
+**Authentication Mechanism:**
+- OTP-based registration and login (email/SMS delivery)
+- JWT token issuance with configurable expiration
+- Password policy enforcement with minimum complexity requirements
+- Session management via stateless token validation
 
-### Tech Stack
-- **Backend:** FastAPI (Python 3.8+), PostgreSQL 12+, SQLAlchemy ORM
-- **Frontend:** React 18, React Router, Tailwind CSS, crypto-js
-- **Deployment:** Vercel (frontend), Render (backend)
+## Project Structure
 
-### Directory Structure
 ```
-backend/                 FastAPI application
+backend/
 ├── app/
-│   ├── api/            Route handlers
-│   ├── models/         SQLAlchemy models
-│   ├── services/       Business logic & encryption
-│   ├── security/       Auth & cryptography
-│   ├── schemas/        Pydantic validators
-│   ├── config.py       Configuration
-│   └── database.py     PostgreSQL setup
-├── alembic_migrations/ Database migrations
-├── requirements.txt    Dependencies
-└── main.py            FastAPI entry point
+│   ├── api/                Route handlers and endpoint definitions
+│   ├── models/             SQLAlchemy ORM model definitions
+│   ├── services/           Business logic and encryption operations
+│   ├── security/           Authentication and cryptographic utilities
+│   ├── schemas/            Pydantic validation schemas
+│   ├── config.py           Application configuration
+│   └── database.py         PostgreSQL connection setup
+├── alembic_migrations/     Database schema versioning
+├── requirements.txt        Python dependencies
+└── main.py                FastAPI application entrypoint
 
-frontend/              React application
+frontend/
 ├── src/
-│   ├── components/    UI components
-│   ├── pages/         Route pages
-│   ├── services/      API clients
-│   └── App.jsx        Router
-├── package.json       Dependencies
-└── tailwind.config.js Styling config
+│   ├── components/        Reusable React components
+│   ├── pages/             Route page components
+│   ├── services/          API client modules
+│   └── App.jsx            Router configuration
+├── package.json           npm dependencies
+└── tailwind.config.js     Tailwind CSS configuration
 ```
 
-## 🚀 Quick Start
+## Installation and Setup
 
 ### Prerequisites
-- Python 3.8+
-- Node.js 16+
-- PostgreSQL 12+
+- Python 3.8 or higher
+- Node.js 16 or higher
+- PostgreSQL 12 or higher
 - Git
 
-### Backend Setup
+### Backend Installation
+
 ```bash
 cd backend
 
-# Create virtual environment
+# Create and activate virtual environment
 python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
+source venv/bin/activate
+# On Windows: venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
 
 # Configure environment
 cp env.example .env
-# Edit .env with your DATABASE_URL, SECRET_KEY, etc.
+# Edit .env with DATABASE_URL, SECRET_KEY, and other required variables
 
-# Initialize database
+# Initialize database schema
 python -c "
 from app.database import engine, Base
 from app.models import *
 Base.metadata.create_all(bind=engine)
-print('Database ready!')
+print('Database schema initialized')
 "
 
-# Start server
+# Start FastAPI server
 python -m app.main
 ```
-Backend runs on: **http://localhost:8000**
 
-### Frontend Setup
+Backend API runs on: http://localhost:8000
+
+### Frontend Installation
+
 ```bash
 cd frontend
 
@@ -113,214 +139,195 @@ npm install
 # Start development server
 npm start
 ```
-Frontend runs on: **http://localhost:3000**
 
-## 📋 Features
+Frontend application runs on: http://localhost:3000
 
-- ✅ Company Management (create, invite members, manage roles)
-- ✅ Job Postings (create, search, filter by location/type/salary)
-- ✅ Application Tracking (submit, track status, recruiter notes)
-- ✅ Encrypted Messaging (AES-256 end-to-end encryption)
-- ✅ Audit Logging (hash-chained tamper-evident logs)
-- 🔐 PKI Integration (digital signatures, certificate-based auth)
-- 🎹 Virtual Keyboard OTP (prevent keylogger attacks)
-- 🛡️ Enhanced Defenses (rate limiting, IP blocking)
-- ⛓️ Blockchain Audit Logs (immutable audit trail)
-- 📊 Advanced Admin Dashboard
+## API Reference
 
-## 🔗 API Endpoints
+### Authentication Endpoints
+- `POST /api/auth/register` - Create user account
+- `POST /api/auth/login` - Authenticate with OTP
+- `GET /api/auth/me` - Retrieve current user information
 
-### Authentication
-- `POST /api/auth/register` - Create account
-- `POST /api/auth/login` - Login with OTP
-- `GET /api/auth/me` - Get current user
-
-### Companies
+### Company Management
 - `POST /api/companies/` - Create company
 - `GET /api/companies/` - List user companies
-- `PUT /api/companies/{id}` - Update company
-- `POST /api/companies/{id}/members` - Add member
-- `DELETE /api/companies/{id}/members/{user_id}` - Remove member
+- `PUT /api/companies/{id}` - Modify company information
+- `POST /api/companies/{id}/members` - Add company member
+- `DELETE /api/companies/{id}/members/{user_id}` - Remove company member
 
-### Jobs
-- `POST /api/jobs/` - Create job posting
-- `GET /api/jobs/search` - Search jobs with filters
-- `GET /api/jobs/featured` - Get featured jobs
+### Job Postings
+- `POST /api/jobs/` - Create job listing
+- `GET /api/jobs/search` - Query jobs with filters
+- `GET /api/jobs/featured` - Retrieve featured listings
 - `PUT /api/jobs/{id}` - Update job posting
 
 ### Applications
-- `POST /api/applications/` - Submit application
+- `POST /api/applications/` - Submit job application
 - `GET /api/applications/my-applications` - Get user applications
 - `PUT /api/applications/{id}` - Update application status
-- `GET /api/applications/job/{job_id}` - Get job applications
+- `GET /api/applications/job/{job_id}` - Get job applications list
 
 ### Messaging
-- `POST /api/messages/conversations` - Create conversation
+- `POST /api/messages/conversations` - Create conversation thread
 - `POST /api/messages/conversations/{id}/messages` - Send encrypted message
-- `GET /api/messages/conversations/{id}/messages` - Get messages
+- `GET /api/messages/conversations/{id}/messages` - Retrieve conversation messages
 - `DELETE /api/messages/{id}` - Delete message
 
-### Audit
-- `GET /api/audit/logs` - Get audit logs
-- `GET /api/audit/integrity` - Verify log integrity
-- `GET /api/audit/summary/system` - System activity summary
+### Audit and Compliance
+- `GET /api/audit/logs` - Retrieve audit log entries
+- `GET /api/audit/integrity` - Verify hash chain integrity
+- `GET /api/audit/summary/system` - Generate system activity summary
 
-**Interactive API Docs:** http://localhost:8000/api/docs (Swagger UI)
+Full API documentation available at: http://localhost:8000/api/docs (Swagger UI)
 
-## 🧪 Testing
+## Database Schema
 
-### Backend Tests
+### Core Tables
+- **users:** User account records with role assignments
+- **companies:** Company profile information
+- **company_members:** Membership records with role assignments
+- **jobs:** Job listing records with metadata
+- **applications:** Application submission records with status tracking
+- **conversations:** Message thread records
+- **messages:** Encrypted message records with integrity hashes
+- **audit_logs:** Hash-chained audit trail entries
+
+## Testing
+
+### Backend Test Suite
 ```bash
 cd backend
 pytest tests/ -v
 ```
 
-### Frontend Tests
+### Frontend Test Suite
 ```bash
 cd frontend
 npm test
 ```
 
-### Manual Testing
-1. **Register & Login:** Visit http://localhost:3000, create account
-2. **Create Company:** Profile → Companies → Create
-3. **Post Job:** Company page → Post Job
-4. **Apply:** Browse jobs → Apply → Upload resume
-5. **Encrypted Message:** Messages → New conversation → Send message
-6. **View Audit Logs:** Admin → Audit → View logs
+### Manual Workflow Testing
+1. Create account and authenticate at http://localhost:3000
+2. Create company via Profile → Companies
+3. Post job listing from company dashboard
+4. Submit application and upload resume
+5. Exchange encrypted messages via messaging system
+6. View audit logs from admin interface
 
-### API Testing with cURL
+### cURL API Examples
 ```bash
 # Health check
 curl http://localhost:8000/api/health
 
-# Register
+# User registration
 curl -X POST http://localhost:8000/api/auth/register \
   -H "Content-Type: application/json" \
-  -d '{"email":"test@example.com","password":"SecurePass123","mobile":"1234567890"}'
+  -d '{"email":"user@example.com","password":"SecurePass123","mobile":"1234567890"}'
 
-# Create company (after login with token)
+# Create company (requires valid JWT token)
 curl -X POST http://localhost:8000/api/companies/ \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer YOUR_TOKEN" \
-  -d '{"name":"Acme Corp","description":"Tech company","location":"Remote"}'
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{"name":"Company Name","description":"Description","location":"City"}'
 ```
 
-## 🔧 Configuration
+## Configuration
 
-### Environment Variables (backend/.env)
+### Backend Environment Variables (.env)
 ```env
-# Database
+# Database connectivity
 DATABASE_URL=postgresql://user:password@localhost:5432/fcs_platform
 
-# Security
-SECRET_KEY=your-secret-key-here-change-in-production
+# Cryptographic settings
+SECRET_KEY=your-secret-key-here
 JWT_ALGORITHM=HS256
 JWT_EXPIRE_MINUTES=30
 
-# Application
+# Application settings
 DEBUG=False
 LOG_LEVEL=INFO
 USE_SSL=False
 
-# CORS (adjust for production)
+# CORS configuration (adjust for production)
 CORS_ORIGINS=["http://localhost:3000"]
 
-# Email (for OTP)
+# Email provider (for OTP delivery)
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=your-email@gmail.com
 SMTP_PASSWORD=your-app-password
 
-# SMS (Twilio)
-TWILIO_ACCOUNT_SID=your-account-sid
-TWILIO_AUTH_TOKEN=your-auth-token
+# SMS provider (Twilio)
+TWILIO_ACCOUNT_SID=your-sid
+TWILIO_AUTH_TOKEN=your-token
 TWILIO_PHONE_NUMBER=+1234567890
 ```
 
-### Environment Variables (frontend/.env.production)
+### Frontend Environment Variables (.env.production)
 ```env
 REACT_APP_API_URL=https://your-backend-url.com
 ```
 
-## 📊 Database Schema
+## Troubleshooting
 
-### Core Tables
-- **users** - User accounts with role-based access
-- **companies** - Company profiles
-- **company_members** - Company membership with roles
-- **jobs** - Job postings with metadata
-- **applications** - Job applications with status tracking
-- **conversations** - Encrypted message threads
-- **messages** - Encrypted messages with integrity hashes
-- **audit_logs** - Hash-chained audit trail
-
-## 🚨 Troubleshooting
-
-### Database Connection Error
+### Database Connectivity Issues
 ```bash
-# Verify PostgreSQL is running
+# Verify PostgreSQL daemon status
 pg_ctl status
 
-# Test connection
+# Test database connection
 psql -h localhost -U username -d fcs_platform
 ```
 
 ### Port Conflicts
+
+On Windows:
 ```bash
-# Kill processes on ports
-# Windows
 netstat -ano | findstr :8000
 taskkill /PID <PID> /F
+```
 
-# Linux/Mac
+On Linux/macOS:
+```bash
 lsof -i :8000
 kill -9 <PID>
 ```
 
-### Module Import Errors
+### Python Module Import Errors
 ```bash
-# Verify virtual environment
+# Verify virtual environment activation
 which python
 
-# Reinstall dependencies
+# Force reinstall dependencies
 pip install -r requirements.txt --force-reinstall
 ```
 
-### CORS Issues
-- Verify frontend URL is in backend's `CORS_ORIGINS`
-- Check both services are running on correct ports
-- Clear browser cache
+### CORS Configuration Problems
+- Verify frontend origin is in backend's CORS_ORIGINS list
+- Confirm both services running on correct ports
+- Clear browser cache and session storage
 
 ### Encryption Key Issues
 ```bash
-# Regenerate encryption keys
+# Regenerate keys (data will be unrecoverable)
 rm message_encryption.key
-# Restart backend to generate new key
+# Restart backend to initialize new key
 ```
 
-## 📚 Documentation
+## Production Deployment
 
-- **Quick Start Guide:** [QUICK_START.md](QUICK_START.md)
-- **March Milestone Details:** [README_MARCH_MILESTONE.md](README_MARCH_MILESTONE.md)
-- **Application Tracking Guide:** [APPLICATION_TRACKING_GUIDE.md](APPLICATION_TRACKING_GUIDE.md)
-- **Testing Guides:** 
-  - [COMPLETE_TESTING_GUIDE.md](COMPLETE_TESTING_GUIDE.md)
-  - [CHROME_TESTING_GUIDE.md](CHROME_TESTING_GUIDE.md)
+### Security Requirements
+1. Replace `SECRET_KEY` with cryptographically secure random value
+2. Enable HTTPS: Set `USE_SSL=True` and configure TLS certificates
+3. Restrict CORS origins to approved domains only
+4. Use strong, randomly-generated database credentials
+5. Implement rate limiting on API endpoints
+6. Configure automated database backups
+7. Monitor audit logs for suspicious patterns
+8. Maintain regular security updates for all dependencies
 
-## 🔐 Security Considerations
-
-### For Production
-1. **Change `SECRET_KEY`** in environment variables
-2. **Enable HTTPS/SSL** - set `USE_SSL=True`
-3. **Configure CORS properly** - whitelist only needed origins
-4. **Use strong passwords** for database credentials
-5. **Enable rate limiting** for API endpoints
-6. **Regular backups** of PostgreSQL database
-7. **Monitor audit logs** for suspicious activity
-8. **Update dependencies** regularly
-
-### Development vs Production
+### Development vs Production Configuration
 ```bash
 # Development
 DEBUG=True
@@ -333,10 +340,17 @@ USE_SSL=True
 CORS_ORIGINS=["https://yourdomain.com"]
 ```
 
-## 📈 Performance
+## Performance Considerations
 
-- **Database Indexes:** Optimized for search and filtering
-- **Message Encryption:** Cached keys for performance
-- **Connection Pooling:** SQLAlchemy session management
-- **Frontend Caching:** Static assets served from CDN
+- Database queries optimized with strategic indexes for search and filtering
+- Message encryption key caching to reduce cryptographic operations
+- SQLAlchemy connection pooling for database resource management
+- Frontend static assets served via CDN for reduced latency
 
+## Additional Documentation
+
+- [QUICK_START.md](QUICK_START.md) - Rapid setup guide
+- [README_MARCH_MILESTONE.md](README_MARCH_MILESTONE.md) - Milestone objectives and features
+- [APPLICATION_TRACKING_GUIDE.md](APPLICATION_TRACKING_GUIDE.md) - Application workflow documentation
+- [COMPLETE_TESTING_GUIDE.md](COMPLETE_TESTING_GUIDE.md) - Comprehensive testing procedures
+- [CHROME_TESTING_GUIDE.md](CHROME_TESTING_GUIDE.md) - Browser-specific testing guide
