@@ -193,15 +193,19 @@ function LoginPage() {
 
         {showResetForm && (
           <form onSubmit={handleResetPassword} className="mt-4 space-y-3 rounded-lg border border-indigo-200 bg-indigo-50 p-3">
-            <p className="text-sm font-medium text-indigo-900">Complete password reset</p>
+            <p className="text-sm font-medium text-indigo-900" id="reset-password-heading">Complete password reset</p>
+            <label htmlFor="reset-otp" className="sr-only">Enter OTP</label>
             <input
+              id="reset-otp"
               type="text"
               value={resetOtp}
               onChange={(e) => setResetOtp(e.target.value)}
               placeholder="Enter OTP"
               className="w-full rounded border border-indigo-200 px-3 py-2 text-sm"
             />
+            <label htmlFor="reset-new-password" className="sr-only">Enter new password</label>
             <input
+              id="reset-new-password"
               type="password"
               value={resetPassword}
               onChange={(e) => setResetPassword(e.target.value)}

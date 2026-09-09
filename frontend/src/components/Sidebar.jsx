@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 
 const navByRole = {
@@ -56,6 +56,44 @@ function Sidebar({ open, onClose, onLogout }) {
   }
   const navItems = navByRole[role] || navByRole.user;
 
+  const asideRef = useRef(null);
+  const triggeringElementRef = useRef(null);
+
+  useEffect(() => {
+    if (open) {
+      triggeringElementRef.current = document.activeElement;
+      const firstFocusable = asideRef.current?.querySelector("a, button");
+      firstFocusable?.focus();
+    } else if (triggeringElementRef.current) {
+      triggeringElementRef.current.focus();
+      triggeringElementRef.current = null;
+    }
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return undefined;
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (e.key !== "Tab" || !asideRef.current) return;
+      const focusables = asideRef.current.querySelectorAll("a, button");
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [open, onClose]);
+
   return (
     <Fragment>
       {/* Mobile overlay */}
@@ -67,6 +105,10 @@ function Sidebar({ open, onClose, onLogout }) {
       )}
 
       <aside
+        ref={asideRef}
+        role={open ? "dialog" : undefined}
+        aria-modal={open ? "true" : undefined}
+        aria-label={open ? "Navigation" : undefined}
         className={`fixed inset-y-0 left-0 z-40 w-64 transform bg-white shadow-md transition-transform md:static md:inset-auto md:translate-x-0 md:shadow-none ${
           open ? "translate-x-0" : "-translate-x-full md:translate-x-0"
         }`}
@@ -89,6 +131,8 @@ function Sidebar({ open, onClose, onLogout }) {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
+                aria-hidden="true"
+                focusable="false"
               >
                 <path
                   strokeLinecap="round"

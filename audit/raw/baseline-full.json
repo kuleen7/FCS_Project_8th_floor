@@ -1,0 +1,584 @@
+[
+  {
+    "role": "public",
+    "label": "public-home",
+    "path": "/",
+    "url": "http://localhost:3000/",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "public",
+    "label": "public-login",
+    "path": "/login",
+    "url": "http://localhost:3000/login",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "public",
+    "label": "public-register",
+    "path": "/register",
+    "url": "http://localhost:3000/register",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "public",
+    "label": "public-verify-otp",
+    "path": "/verify-otp?email=a11y.jobseeker%40example.com",
+    "url": "http://localhost:3000/verify-otp?email=a11y.jobseeker%40example.com",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "jobseeker",
+    "label": "jobseeker-dashboard",
+    "path": "/dashboard",
+    "url": "http://localhost:3000/dashboard",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "jobseeker",
+    "label": "jobseeker-profile",
+    "path": "/profile",
+    "url": "http://localhost:3000/profile",
+    "ok": true,
+    "axe": {
+      "violationCount": 1,
+      "bySeverity": {
+        "critical": 1,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [
+        "4.1.2"
+      ],
+      "items": [
+        {
+          "id": "select-name",
+          "impact": "critical",
+          "help": "Select element must have an accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/select-name?application=playwright",
+          "wcag": [
+            "4.1.2"
+          ],
+          "nodeCount": 1,
+          "sampleSelector": "select",
+          "sampleHtml": "<select class=\"rounded border px-3 py-2\" disabled=\"\"><option value=\"public\">Public</option><option value=\"connections\">Connections-only</option><option value=\"private\">Private</option></select>"
+        }
+      ]
+    },
+    "lighthouse": {
+      "score": 94,
+      "failedAudits": [
+        {
+          "id": "select-name",
+          "title": "Select elements do not have associated label elements.",
+          "score": 0
+        }
+      ]
+    }
+  },
+  {
+    "role": "jobseeker",
+    "label": "jobseeker-applications",
+    "path": "/applications",
+    "url": "http://localhost:3000/applications",
+    "ok": true,
+    "axe": {
+      "violationCount": 1,
+      "bySeverity": {
+        "critical": 1,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [
+        "4.1.2"
+      ],
+      "items": [
+        {
+          "id": "select-name",
+          "impact": "critical",
+          "help": "Select element must have an accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/select-name?application=playwright",
+          "wcag": [
+            "4.1.2"
+          ],
+          "nodeCount": 1,
+          "sampleSelector": "select",
+          "sampleHtml": "<select class=\"rounded border px-3 py-2 text-sm\">"
+        }
+      ]
+    },
+    "lighthouse": {
+      "score": 93,
+      "failedAudits": [
+        {
+          "id": "select-name",
+          "title": "Select elements do not have associated label elements.",
+          "score": 0
+        }
+      ]
+    }
+  },
+  {
+    "role": "jobseeker",
+    "label": "jobseeker-messages",
+    "path": "/messages",
+    "url": "http://localhost:3000/messages",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "jobseeker",
+    "label": "jobseeker-resumes",
+    "path": "/resumes",
+    "url": "http://localhost:3000/resumes",
+    "ok": true,
+    "axe": {
+      "violationCount": 2,
+      "bySeverity": {
+        "critical": 2,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [
+        "4.1.2"
+      ],
+      "items": [
+        {
+          "id": "label",
+          "impact": "critical",
+          "help": "Form elements must have labels",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/label?application=playwright",
+          "wcag": [
+            "4.1.2"
+          ],
+          "nodeCount": 1,
+          "sampleSelector": "input",
+          "sampleHtml": "<input type=\"file\">"
+        },
+        {
+          "id": "select-name",
+          "impact": "critical",
+          "help": "Select element must have an accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/select-name?application=playwright",
+          "wcag": [
+            "4.1.2"
+          ],
+          "nodeCount": 1,
+          "sampleSelector": "select",
+          "sampleHtml": "<select class=\"w-full rounded border px-3 py-2\"><option value=\"\">Select job</option></select>"
+        }
+      ]
+    },
+    "lighthouse": {
+      "score": 88,
+      "failedAudits": [
+        {
+          "id": "label",
+          "title": "Form elements do not have associated labels",
+          "score": 0
+        },
+        {
+          "id": "select-name",
+          "title": "Select elements do not have associated label elements.",
+          "score": 0
+        }
+      ]
+    }
+  },
+  {
+    "role": "jobseeker",
+    "label": "jobseeker-job-search",
+    "path": "/jobs/search",
+    "url": "http://localhost:3000/jobs/search",
+    "ok": true,
+    "axe": {
+      "violationCount": 1,
+      "bySeverity": {
+        "critical": 1,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [
+        "4.1.2"
+      ],
+      "items": [
+        {
+          "id": "select-name",
+          "impact": "critical",
+          "help": "Select element must have an accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/select-name?application=playwright",
+          "wcag": [
+            "4.1.2"
+          ],
+          "nodeCount": 3,
+          "sampleSelector": "div:nth-child(2) > select",
+          "sampleHtml": "<select class=\"w-full rounded-lg border border-slate-300 px-3 py-2\"><option value=\"\">All Locations</option></select>"
+        }
+      ]
+    },
+    "lighthouse": {
+      "score": 94,
+      "failedAudits": [
+        {
+          "id": "select-name",
+          "title": "Select elements do not have associated label elements.",
+          "score": 0
+        }
+      ]
+    }
+  },
+  {
+    "role": "recruiter",
+    "label": "recruiter-dashboard",
+    "path": "/dashboard",
+    "url": "http://localhost:3000/dashboard",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "recruiter",
+    "label": "recruiter-company",
+    "path": "/company",
+    "url": "http://localhost:3000/company",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "recruiter",
+    "label": "recruiter-jobs",
+    "path": "/jobs",
+    "url": "http://localhost:3000/jobs",
+    "ok": true,
+    "axe": {
+      "violationCount": 1,
+      "bySeverity": {
+        "critical": 1,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [
+        "4.1.2"
+      ],
+      "items": [
+        {
+          "id": "select-name",
+          "impact": "critical",
+          "help": "Select element must have an accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/select-name?application=playwright",
+          "wcag": [
+            "4.1.2"
+          ],
+          "nodeCount": 2,
+          "sampleSelector": ".p-4.rounded.border:nth-child(3) > select",
+          "sampleHtml": "<select class=\"w-full rounded border px-3 py-2\"><option value=\"\">Select company</option></select>"
+        }
+      ]
+    },
+    "lighthouse": {
+      "score": 94,
+      "failedAudits": [
+        {
+          "id": "select-name",
+          "title": "Select elements do not have associated label elements.",
+          "score": 0
+        }
+      ]
+    }
+  },
+  {
+    "role": "recruiter",
+    "label": "recruiter-applications",
+    "path": "/applications",
+    "url": "http://localhost:3000/applications",
+    "ok": true,
+    "axe": {
+      "violationCount": 1,
+      "bySeverity": {
+        "critical": 1,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [
+        "4.1.2"
+      ],
+      "items": [
+        {
+          "id": "select-name",
+          "impact": "critical",
+          "help": "Select element must have an accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/select-name?application=playwright",
+          "wcag": [
+            "4.1.2"
+          ],
+          "nodeCount": 2,
+          "sampleSelector": "select:nth-child(1)",
+          "sampleHtml": "<select class=\"rounded border px-3 py-2 text-sm\"><option value=\"\">Select job</option></select>"
+        }
+      ]
+    },
+    "lighthouse": {
+      "score": 93,
+      "failedAudits": [
+        {
+          "id": "select-name",
+          "title": "Select elements do not have associated label elements.",
+          "score": 0
+        }
+      ]
+    }
+  },
+  {
+    "role": "recruiter",
+    "label": "recruiter-messages",
+    "path": "/messages",
+    "url": "http://localhost:3000/messages",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "admin",
+    "label": "admin-dashboard",
+    "path": "/dashboard",
+    "url": "http://localhost:3000/dashboard",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "admin",
+    "label": "admin-users",
+    "path": "/admin/users",
+    "url": "http://localhost:3000/admin/users",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "admin",
+    "label": "admin-system",
+    "path": "/admin/system",
+    "url": "http://localhost:3000/admin/system",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "admin",
+    "label": "admin-audit",
+    "path": "/admin/audit",
+    "url": "http://localhost:3000/admin/audit",
+    "ok": true,
+    "axe": {
+      "violationCount": 1,
+      "bySeverity": {
+        "critical": 1,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [
+        "4.1.2"
+      ],
+      "items": [
+        {
+          "id": "select-name",
+          "impact": "critical",
+          "help": "Select element must have an accessible name",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/select-name?application=playwright",
+          "wcag": [
+            "4.1.2"
+          ],
+          "nodeCount": 1,
+          "sampleSelector": "select",
+          "sampleHtml": "<select class=\"rounded-lg border border-slate-300 px-3 py-2 text-sm\">"
+        }
+      ]
+    },
+    "lighthouse": {
+      "score": 94,
+      "failedAudits": [
+        {
+          "id": "select-name",
+          "title": "Select elements do not have associated label elements.",
+          "score": 0
+        }
+      ]
+    }
+  }
+]

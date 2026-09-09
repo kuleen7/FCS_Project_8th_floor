@@ -1,0 +1,16 @@
+{
+  "name": "a11y-audit-tooling",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Standalone WCAG 2.1 AA audit tooling for the frontend app. Not part of the app build.",
+  "type": "module",
+  "scripts": {
+    "audit": "node scripts/run-audit.mjs"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.1",
+    "axe-core": "^4.10.2",
+    "lighthouse": "^11.7.1",
+    "playwright": "^1.48.0"
+  }
+}

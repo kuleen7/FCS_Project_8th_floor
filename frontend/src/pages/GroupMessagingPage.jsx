@@ -145,25 +145,31 @@ function GroupMessagingPage() {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-2xl font-semibold">Secure Messaging (Live Polling)</h2>
+      <h1 className="text-2xl font-semibold">Secure Messaging (Live Polling)</h1>
       {error ? <p className="text-sm text-red-600">{error}</p> : null}
       {directoryError ? <p className="text-sm text-red-600">{directoryError}</p> : null}
 
       <div className="rounded border p-4">
-        <p className="mb-2 text-sm font-medium">Create conversation</p>
+        <p className="mb-2 text-sm font-medium" id="create-conversation-heading">Create conversation</p>
+        <label htmlFor="conversation-name" className="sr-only">Group name (optional)</label>
         <input
+          id="conversation-name"
           className="mb-2 w-full rounded border px-3 py-2"
           placeholder="Group name (optional)"
           value={newConversationName}
           onChange={(e) => setNewConversationName(e.target.value)}
         />
+        <label htmlFor="conversation-user-search" className="sr-only">Search users by email or name</label>
         <input
+          id="conversation-user-search"
           className="mb-2 w-full rounded border px-3 py-2"
           placeholder="Search users by email or name"
           value={userSearch}
           onChange={(e) => setUserSearch(e.target.value)}
         />
+        <label htmlFor="conversation-participant-emails" className="sr-only">Or enter participant emails (comma-separated)</label>
         <input
+          id="conversation-participant-emails"
           className="mb-2 w-full rounded border px-3 py-2"
           placeholder="Or enter participant emails (comma-separated)"
           value={participantEmails}
@@ -239,7 +245,9 @@ function GroupMessagingPage() {
           </div>
           <div className="border-t p-3">
             <div className="flex gap-2">
+              <label htmlFor="new-message-input" className="sr-only">Type message</label>
               <input
+                id="new-message-input"
                 className="flex-1 rounded border px-3 py-2"
                 value={newMessage}
                 placeholder="Type message"

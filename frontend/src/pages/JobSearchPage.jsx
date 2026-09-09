@@ -121,14 +121,15 @@ function JobSearchPage() {
         </div>
       </div>
 
-      <main className="mx-auto max-w-7xl space-y-4 px-4 py-6 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl space-y-4 px-4 py-6 sm:px-6 lg:px-8">
         {error ? <p className="rounded border border-rose-200 bg-rose-50 p-3 text-sm text-rose-700">{error}</p> : null}
 
         <div className="rounded-lg bg-white p-6 shadow">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-5">
             <div className="lg:col-span-2">
-              <label className="mb-2 block text-sm font-medium text-slate-700">Search Jobs</label>
+              <label htmlFor="job-search-term" className="mb-2 block text-sm font-medium text-slate-700">Search Jobs</label>
               <input
+                id="job-search-term"
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -137,8 +138,8 @@ function JobSearchPage() {
               />
             </div>
             <div>
-              <label className="mb-2 block text-sm font-medium text-slate-700">Location</label>
-              <select value={selectedLocation} onChange={(e) => setSelectedLocation(e.target.value)} className="w-full rounded-lg border border-slate-300 px-3 py-2">
+              <label htmlFor="job-search-location" className="mb-2 block text-sm font-medium text-slate-700">Location</label>
+              <select id="job-search-location" value={selectedLocation} onChange={(e) => setSelectedLocation(e.target.value)} className="w-full rounded-lg border border-slate-300 px-3 py-2">
                 <option value="">All Locations</option>
                 {locations.map((location) => (
                   <option key={location} value={location}>
@@ -148,8 +149,8 @@ function JobSearchPage() {
               </select>
             </div>
             <div>
-              <label className="mb-2 block text-sm font-medium text-slate-700">Job Type</label>
-              <select value={selectedType} onChange={(e) => setSelectedType(e.target.value)} className="w-full rounded-lg border border-slate-300 px-3 py-2">
+              <label htmlFor="job-search-type" className="mb-2 block text-sm font-medium text-slate-700">Job Type</label>
+              <select id="job-search-type" value={selectedType} onChange={(e) => setSelectedType(e.target.value)} className="w-full rounded-lg border border-slate-300 px-3 py-2">
                 <option value="">All Types</option>
                 {jobTypes.map((jobType) => (
                   <option key={jobType} value={jobType}>
@@ -159,8 +160,8 @@ function JobSearchPage() {
               </select>
             </div>
             <div>
-              <label className="mb-2 block text-sm font-medium text-slate-700">Min Salary</label>
-              <select value={selectedSalary} onChange={(e) => setSelectedSalary(e.target.value)} className="w-full rounded-lg border border-slate-300 px-3 py-2">
+              <label htmlFor="job-search-salary" className="mb-2 block text-sm font-medium text-slate-700">Min Salary</label>
+              <select id="job-search-salary" value={selectedSalary} onChange={(e) => setSelectedSalary(e.target.value)} className="w-full rounded-lg border border-slate-300 px-3 py-2">
                 <option value="">Any</option>
                 <option value="30000">$30,000+</option>
                 <option value="50000">$50,000+</option>
@@ -211,7 +212,7 @@ function JobSearchPage() {
                       disabled={applied || applyingJobId === job.id}
                       className={`rounded-lg px-4 py-2 text-sm font-medium ${
                         applied
-                          ? "cursor-not-allowed bg-slate-100 text-slate-400"
+                          ? "cursor-not-allowed bg-slate-200 text-slate-600"
                           : "bg-indigo-600 text-white hover:bg-indigo-700"
                       }`}
                     >
@@ -223,7 +224,7 @@ function JobSearchPage() {
             })
           )}
         </div>
-      </main>
+      </div>
     </div>
   );
 }

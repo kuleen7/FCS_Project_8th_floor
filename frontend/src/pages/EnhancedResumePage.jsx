@@ -119,22 +119,24 @@ function EnhancedResumePage() {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-2xl font-semibold">Resume Management (April Bonus)</h2>
+      <h1 className="text-2xl font-semibold">Resume Management (April Bonus)</h1>
       {error ? <p className="text-sm text-red-600">{error}</p> : null}
       <p className="text-sm text-slate-600">
         Download/delete require virtual keyboard OTP. Parse/match use April intelligent resume APIs.
       </p>
 
       <div className="rounded border p-4">
-        <input type="file" onChange={(e) => setSelectedFile(e.target.files?.[0] || null)} />
+        <label htmlFor="resume-upload-input" className="sr-only">Upload resume file (PDF or DOCX)</label>
+        <input id="resume-upload-input" type="file" accept=".pdf,.docx" onChange={(e) => setSelectedFile(e.target.files?.[0] || null)} />
         <button className="ml-2 rounded bg-indigo-600 px-3 py-1 text-white" onClick={onUpload}>
           Upload
         </button>
       </div>
 
       <div className="rounded border p-4">
-        <label className="mb-1 block text-sm">Job for matching</label>
+        <label htmlFor="resume-match-job-select" className="mb-1 block text-sm">Job for matching</label>
         <select
+          id="resume-match-job-select"
           className="w-full rounded border px-3 py-2"
           value={selectedJobId}
           onChange={(e) => setSelectedJobId(e.target.value)}

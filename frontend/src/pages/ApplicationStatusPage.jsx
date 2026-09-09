@@ -102,9 +102,9 @@ function ApplicationStatusPage() {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
+      <div className="flex min-h-screen items-center justify-center" role="status" aria-live="polite">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600" aria-hidden="true"></div>
           <p className="mt-4 text-slate-600">Loading applications...</p>
         </div>
       </div>
@@ -118,7 +118,10 @@ function ApplicationStatusPage() {
         <div className="flex gap-2">
           {isRecruiter ? (
             <>
+              <label htmlFor="applicants-job-select" className="sr-only">Select job</label>
               <select
+                id="applicants-job-select"
+                aria-label="Select job to view applicants"
                 value={selectedJobId}
                 onChange={async (e) => {
                   const id = e.target.value;
@@ -149,7 +152,10 @@ function ApplicationStatusPage() {
               </button>
             </>
           ) : null}
+          <label htmlFor="applications-status-filter" className="sr-only">Filter by status</label>
           <select
+            id="applications-status-filter"
+            aria-label="Filter applications by status"
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
             className="rounded border px-3 py-2 text-sm"
@@ -164,7 +170,7 @@ function ApplicationStatusPage() {
         </div>
       </div>
       {error ? <p className="text-sm text-red-600">{error}</p> : null}
-      <main>
+      <div>
         {!isRecruiter ? (
           <div className="space-y-6">
             {filteredApplications.map((app) => (
@@ -206,6 +212,11 @@ function ApplicationStatusPage() {
                     value={String(app.status)}
                     onChange={(e) => updateApplicantStatus(app.id, e.target.value)}
                     className="rounded border px-2 py-1 text-sm"
+                    aria-label={`Update status for ${
+                      app.applicant
+                        ? `${app.applicant.first_name || ""} ${app.applicant.last_name || ""}`.trim() || app.applicant.email
+                        : `applicant #${app.applicant_id}`
+                    }`}
                   >
                     <option value="Applied">Applied</option>
                     <option value="Reviewed">Reviewed</option>
@@ -218,7 +229,7 @@ function ApplicationStatusPage() {
             ))}
           </div>
         )}
-      </main>
+      </div>
     </div>
   );
 }

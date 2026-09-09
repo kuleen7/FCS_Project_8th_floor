@@ -188,7 +188,7 @@ function EnhancedProfilePage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-semibold">Profile & Security Center</h2>
+        <h1 className="text-2xl font-semibold">Profile & Security Center</h1>
         <button className="rounded border px-3 py-1.5 text-sm" onClick={loadAll}>
           Refresh
         </button>
@@ -199,23 +199,23 @@ function EnhancedProfilePage() {
 
       <div className="rounded-lg border bg-white p-4">
         <div className="mb-3 flex items-center justify-between">
-          <h3 className="font-semibold">Profile</h3>
+          <h2 className="font-semibold">Profile</h2>
           <button className="rounded border px-3 py-1 text-sm" onClick={() => setEditing((v) => !v)}>
             {editing ? "Cancel" : "Edit"}
           </button>
         </div>
         <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-          <input className="rounded border px-3 py-2" placeholder="First name" value={formData.first_name} disabled={!editing} onChange={(e) => setFormData({ ...formData, first_name: e.target.value })} />
-          <input className="rounded border px-3 py-2" placeholder="Last name" value={formData.last_name} disabled={!editing} onChange={(e) => setFormData({ ...formData, last_name: e.target.value })} />
-          <input className="rounded border px-3 py-2" placeholder="Mobile" value={formData.mobile} disabled={!editing} onChange={(e) => setFormData({ ...formData, mobile: e.target.value })} />
-          <input className="rounded border px-3 py-2" placeholder="Headline" value={formData.headline} disabled={!editing} onChange={(e) => setFormData({ ...formData, headline: e.target.value })} />
-          <input className="rounded border px-3 py-2" placeholder="Location" value={formData.location} disabled={!editing} onChange={(e) => setFormData({ ...formData, location: e.target.value })} />
-          <select className="rounded border px-3 py-2" value={formData.privacy_level} disabled={!editing} onChange={(e) => setFormData({ ...formData, privacy_level: e.target.value })}>
+          <input aria-label="First name" className="rounded border px-3 py-2" placeholder="First name" value={formData.first_name} disabled={!editing} onChange={(e) => setFormData({ ...formData, first_name: e.target.value })} />
+          <input aria-label="Last name" className="rounded border px-3 py-2" placeholder="Last name" value={formData.last_name} disabled={!editing} onChange={(e) => setFormData({ ...formData, last_name: e.target.value })} />
+          <input aria-label="Mobile" className="rounded border px-3 py-2" placeholder="Mobile" value={formData.mobile} disabled={!editing} onChange={(e) => setFormData({ ...formData, mobile: e.target.value })} />
+          <input aria-label="Headline" className="rounded border px-3 py-2" placeholder="Headline" value={formData.headline} disabled={!editing} onChange={(e) => setFormData({ ...formData, headline: e.target.value })} />
+          <input aria-label="Location" className="rounded border px-3 py-2" placeholder="Location" value={formData.location} disabled={!editing} onChange={(e) => setFormData({ ...formData, location: e.target.value })} />
+          <select aria-label="Profile privacy level" className="rounded border px-3 py-2" value={formData.privacy_level} disabled={!editing} onChange={(e) => setFormData({ ...formData, privacy_level: e.target.value })}>
             <option value="public">Public</option>
             <option value="connections">Connections-only</option>
             <option value="private">Private</option>
           </select>
-          <textarea className="rounded border px-3 py-2 md:col-span-2" rows={3} placeholder="Bio" value={formData.bio} disabled={!editing} onChange={(e) => setFormData({ ...formData, bio: e.target.value })} />
+          <textarea aria-label="Bio" className="rounded border px-3 py-2 md:col-span-2" rows={3} placeholder="Bio" value={formData.bio} disabled={!editing} onChange={(e) => setFormData({ ...formData, bio: e.target.value })} />
         </div>
         {editing ? (
           <div className="mt-3">
@@ -228,12 +228,13 @@ function EnhancedProfilePage() {
       </div>
 
       <div className="rounded-lg border bg-white p-4">
-        <h3 className="mb-3 font-semibold">Authenticator (TOTP) 2FA</h3>
+        <h2 className="mb-3 font-semibold">Authenticator (TOTP) 2FA</h2>
         <div className="flex flex-wrap items-center gap-2">
           <button disabled={totpLoading} onClick={handleTotpSetup} className="rounded border px-3 py-2 text-sm">
             {totpLoading ? "Preparing..." : "Setup 2FA"}
           </button>
           <input
+            aria-label="6-digit authenticator code"
             className="rounded border px-3 py-2 text-sm"
             placeholder="6-digit code"
             value={totpCode}
@@ -255,9 +256,10 @@ function EnhancedProfilePage() {
       </div>
 
       <div className="rounded-lg border bg-white p-4">
-        <h3 className="mb-3 font-semibold">Connections</h3>
+        <h2 className="mb-3 font-semibold">Connections</h2>
         <div className="mb-3 flex flex-wrap gap-2">
           <input
+            aria-label="Target user ID"
             className="rounded border px-3 py-2 text-sm"
             placeholder="Target user ID"
             value={targetUserId}
@@ -317,7 +319,7 @@ function EnhancedProfilePage() {
       </div>
 
       <div className="rounded-lg border bg-white p-4">
-        <h3 className="mb-3 font-semibold">Viewer Privacy & Graph</h3>
+        <h2 className="mb-3 font-semibold">Viewer Privacy & Graph</h2>
         <div className="mb-3 flex items-center gap-2">
           <input
             id="showIdentity"

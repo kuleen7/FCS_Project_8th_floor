@@ -52,11 +52,13 @@ function AdminUserManagementPage() {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-2xl font-semibold">Admin User Management (April Secured)</h2>
+      <h1 className="text-2xl font-semibold">Admin User Management (April Secured)</h1>
       <p className="text-sm text-slate-600">
         Suspend/reactivate/delete actions require PKI signing and virtual keyboard OTP.
       </p>
+      <label htmlFor="admin-user-search" className="sr-only">Search users by name or email</label>
       <input
+        id="admin-user-search"
         className="w-full rounded border px-3 py-2"
         placeholder="Search users by name or email"
         value={search}

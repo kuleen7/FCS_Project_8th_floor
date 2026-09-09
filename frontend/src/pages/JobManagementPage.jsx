@@ -129,15 +129,16 @@ function JobManagementPage() {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-semibold">Job Management (April Secured)</h2>
+      <h1 className="text-2xl font-semibold">Job Management (April Secured)</h1>
       {error ? <p className="text-sm text-red-600">{error}</p> : null}
       <p className="text-sm text-slate-600">
         Protected actions trigger virtual keyboard OTP and PKI signing automatically.
       </p>
 
       <div className="rounded border p-4">
-        <p className="mb-2 text-sm font-medium">Select company for this job</p>
+        <label htmlFor="job-company-select" className="mb-2 block text-sm font-medium">Select company for this job</label>
         <select
+          id="job-company-select"
           className="w-full rounded border px-3 py-2"
           value={selectedCompanyId || ""}
           onChange={(e) => setSelectedCompanyId(Number(e.target.value))}
@@ -150,7 +151,9 @@ function JobManagementPage() {
           ))}
         </select>
         <div className="mt-3 flex gap-2">
+          <label htmlFor="job-new-company-name" className="sr-only">Create new company name</label>
           <input
+            id="job-new-company-name"
             className="flex-1 rounded border px-3 py-2"
             placeholder="Create new company name"
             value={newCompanyName}
@@ -168,34 +171,44 @@ function JobManagementPage() {
       </div>
 
       <form onSubmit={onSubmit} className="space-y-3 rounded border p-4">
+        <label htmlFor="job-title" className="sr-only">Title</label>
         <input
+          id="job-title"
           className="w-full rounded border px-3 py-2"
           placeholder="Title"
           value={form.title}
           onChange={(e) => setForm({ ...form, title: e.target.value })}
           required
         />
+        <label htmlFor="job-description" className="sr-only">Description</label>
         <textarea
+          id="job-description"
           className="w-full rounded border px-3 py-2"
           placeholder="Description"
           value={form.description}
           onChange={(e) => setForm({ ...form, description: e.target.value })}
           required
         />
+        <label htmlFor="job-skills" className="sr-only">Required skills (comma separated)</label>
         <input
+          id="job-skills"
           className="w-full rounded border px-3 py-2"
           placeholder="Required skills (comma separated)"
           value={form.required_skills}
           onChange={(e) => setForm({ ...form, required_skills: e.target.value })}
         />
+        <label htmlFor="job-location" className="sr-only">Location</label>
         <input
+          id="job-location"
           className="w-full rounded border px-3 py-2"
           placeholder="Location"
           value={form.location}
           onChange={(e) => setForm({ ...form, location: e.target.value })}
           required
         />
+        <label htmlFor="job-type-select" className="sr-only">Job type</label>
         <select
+          id="job-type-select"
           className="w-full rounded border px-3 py-2"
           value={form.job_type}
           onChange={(e) => setForm({ ...form, job_type: e.target.value })}

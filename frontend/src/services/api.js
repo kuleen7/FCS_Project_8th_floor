@@ -172,10 +172,35 @@ const collectVirtualOtpPositions = (challenge, actionLabel = "Secure action") =>
   new Promise((resolve, reject) => {
     const layout = challenge.layout || [];
     const selectedPositions = [];
+    const previouslyFocused = document.activeElement;
+
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        cancel();
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const focusables = Array.from(modal.querySelectorAll("button"));
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
 
     const cleanup = () => {
+      document.removeEventListener("keydown", handleKeyDown, true);
       if (overlay && overlay.parentNode) {
         overlay.parentNode.removeChild(overlay);
+      }
+      if (previouslyFocused && typeof previouslyFocused.focus === "function") {
+        previouslyFocused.focus();
       }
     };
 
@@ -203,6 +228,10 @@ const collectVirtualOtpPositions = (challenge, actionLabel = "Secure action") =>
     overlay.style.justifyContent = "center";
 
     const modal = document.createElement("div");
+    modal.setAttribute("role", "dialog");
+    modal.setAttribute("aria-modal", "true");
+    modal.setAttribute("aria-labelledby", "virtual-otp-title");
+    modal.setAttribute("aria-describedby", "virtual-otp-subtitle");
     modal.style.width = "min(92vw, 420px)";
     modal.style.background = "#fff";
     modal.style.borderRadius = "12px";
@@ -211,17 +240,22 @@ const collectVirtualOtpPositions = (challenge, actionLabel = "Secure action") =>
     modal.style.fontFamily = "system-ui, -apple-system, Segoe UI, Roboto, sans-serif";
 
     const title = document.createElement("h3");
+    title.id = "virtual-otp-title";
     title.textContent = "Virtual Keyboard OTP";
     title.style.margin = "0 0 8px 0";
     title.style.fontSize = "18px";
 
     const subtitle = document.createElement("p");
+    subtitle.id = "virtual-otp-subtitle";
     subtitle.textContent = `${actionLabel}: tap OTP digits in order on this randomized keypad.`;
     subtitle.style.margin = "0 0 10px 0";
     subtitle.style.fontSize = "13px";
     subtitle.style.color = "#475569";
 
     const selectedBox = document.createElement("div");
+    selectedBox.setAttribute("role", "status");
+    selectedBox.setAttribute("aria-live", "polite");
+    selectedBox.setAttribute("aria-label", "Selected OTP digits");
     selectedBox.style.marginBottom = "10px";
     selectedBox.style.padding = "8px";
     selectedBox.style.border = "1px solid #cbd5e1";
@@ -331,6 +365,8 @@ const collectVirtualOtpPositions = (challenge, actionLabel = "Secure action") =>
     modal.appendChild(actions);
     overlay.appendChild(modal);
     document.body.appendChild(overlay);
+    document.addEventListener("keydown", handleKeyDown, true);
+    keypad.querySelector("button")?.focus();
   });
 
 export const buildHighRiskHeaders = async (action) => {

@@ -1,0 +1,420 @@
+[
+  {
+    "role": "public",
+    "label": "public-home",
+    "path": "/",
+    "url": "http://localhost:3000/",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "public",
+    "label": "public-login",
+    "path": "/login",
+    "url": "http://localhost:3000/login",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "public",
+    "label": "public-register",
+    "path": "/register",
+    "url": "http://localhost:3000/register",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "public",
+    "label": "public-verify-otp",
+    "path": "/verify-otp?email=a11y.jobseeker%40example.com",
+    "url": "http://localhost:3000/verify-otp?email=a11y.jobseeker%40example.com",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "jobseeker",
+    "label": "jobseeker-dashboard",
+    "path": "/dashboard",
+    "url": "http://localhost:3000/dashboard",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "jobseeker",
+    "label": "jobseeker-profile",
+    "path": "/profile",
+    "url": "http://localhost:3000/profile",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "jobseeker",
+    "label": "jobseeker-applications",
+    "path": "/applications",
+    "url": "http://localhost:3000/applications",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "jobseeker",
+    "label": "jobseeker-messages",
+    "path": "/messages",
+    "url": "http://localhost:3000/messages",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "jobseeker",
+    "label": "jobseeker-resumes",
+    "path": "/resumes",
+    "url": "http://localhost:3000/resumes",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "jobseeker",
+    "label": "jobseeker-job-search",
+    "path": "/jobs/search",
+    "url": "http://localhost:3000/jobs/search",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "recruiter",
+    "label": "recruiter-dashboard",
+    "path": "/dashboard",
+    "url": "http://localhost:3000/dashboard",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "recruiter",
+    "label": "recruiter-company",
+    "path": "/company",
+    "url": "http://localhost:3000/company",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "recruiter",
+    "label": "recruiter-jobs",
+    "path": "/jobs",
+    "url": "http://localhost:3000/jobs",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "recruiter",
+    "label": "recruiter-applications",
+    "path": "/applications",
+    "url": "http://localhost:3000/applications",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "recruiter",
+    "label": "recruiter-messages",
+    "path": "/messages",
+    "url": "http://localhost:3000/messages",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "admin",
+    "label": "admin-dashboard",
+    "path": "/dashboard",
+    "url": "http://localhost:3000/dashboard",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "admin",
+    "label": "admin-users",
+    "path": "/admin/users",
+    "url": "http://localhost:3000/admin/users",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "admin",
+    "label": "admin-system",
+    "path": "/admin/system",
+    "url": "http://localhost:3000/admin/system",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  },
+  {
+    "role": "admin",
+    "label": "admin-audit",
+    "path": "/admin/audit",
+    "url": "http://localhost:3000/admin/audit",
+    "ok": true,
+    "axe": {
+      "violationCount": 0,
+      "bySeverity": {
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0
+      },
+      "criteria": [],
+      "items": []
+    },
+    "lighthouse": {
+      "score": 100,
+      "failedAudits": []
+    }
+  }
+]

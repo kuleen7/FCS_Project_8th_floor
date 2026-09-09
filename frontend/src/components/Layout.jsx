@@ -15,6 +15,12 @@ function Layout() {
 
   return (
     <div className="flex min-h-screen flex-col bg-gradient-to-b from-slate-50 to-indigo-50/40">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-indigo-600 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white focus:shadow-lg"
+      >
+        Skip to main content
+      </a>
       <Navbar
         onMenuClick={() => setSidebarOpen(true)}
         onLogout={handleLogout}
@@ -25,7 +31,7 @@ function Layout() {
           onClose={() => setSidebarOpen(false)}
           onLogout={handleLogout}
         />
-        <main className="ml-0 flex-1 md:ml-64">
+        <main id="main-content" tabIndex={-1} className="ml-0 flex-1 outline-none md:ml-64">
           <div className="h-full rounded-2xl border border-slate-200/70 bg-white/95 p-6 shadow-lg backdrop-blur md:ml-6">
             <Outlet />
           </div>
