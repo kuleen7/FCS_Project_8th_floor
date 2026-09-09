@@ -10,7 +10,7 @@ from ..models import User, UserRole, Connection, ConnectionStatus, ProfileView, 
 from ..schemas import UserUpdate
 from ..security import get_current_user
 
-router = APIRouter(prefix="/api/profile", tags=["profile"])
+router = APIRouter()
 
 @router.get("/me")
 async def get_current_profile(current_user: User = Depends(get_current_user)):

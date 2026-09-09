@@ -60,6 +60,7 @@ class UserUpdate(BaseModel):
     headline: Optional[str] = None
     location: Optional[str] = None
     bio: Optional[str] = None
+    mobile: Optional[str] = None
     profile_picture: Optional[str] = None
     privacy_level: Optional[str] = Field(None, pattern="^(public|connections|private)$")
 
@@ -84,16 +85,6 @@ class UserResponse(UserBase):
     
     class Config:
         from_attributes = True
-
-
-class UserUpdate(BaseModel):
-    """User update schema"""
-    first_name: Optional[str] = None
-    last_name: Optional[str] = None
-    headline: Optional[str] = None
-    location: Optional[str] = None
-    bio: Optional[str] = None
-    mobile: Optional[str] = None
 
 
 # Token Schemas
